@@ -1,10 +1,17 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import Button from "../components/Button";
+import Header from "../components/Header";
 
 const Home = () => {
-  const [SearchParams, setSearchParams] = useSearchParams();
-  console.log(SearchParams.get("sort"));
-  return <div></div>;
+  return (
+    <div>
+      <Header
+        title={"Home"}
+        leftChild={<Button type={"default"} text={"< 뒤로가기"} />}
+        rightChild={<Button type={"negative"} text={"삭제하기"} />}
+      />
+    </div>
+  );
 };
 
 export default Home;
