@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import New from "./pages/New";
@@ -103,7 +103,7 @@ function App() {
     return <div>데이터를 불러오는 중입니다..</div>;
   } else {
     return (
-      <DiaryDispatchContext value={data}>
+      <DiaryDispatchContext.Provider value={data}>
         <DiaryStateContext.Provider
           value={{
             onCreate,
@@ -120,7 +120,7 @@ function App() {
             </Routes>
           </div>
         </DiaryStateContext.Provider>
-      </DiaryDispatchContext>
+      </DiaryDispatchContext.Provider>
     );
   }
 }
