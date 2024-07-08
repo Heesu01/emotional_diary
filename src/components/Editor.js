@@ -103,8 +103,8 @@ const BottomSection = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const H4 = styled.div`
-  font-style: 22px;
+const H4 = styled.h4`
+  font-size: 22px;
   font-weight: bold;
 `;
 const InputWrapper = styled.div`
@@ -114,7 +114,7 @@ const InputWrapper = styled.div`
     border-radius: 5px;
     background-color: #ececec;
     padding: 20px;
-    font-style: 20px;
+    font-size: 20px;
     font-family: "Nanum pen Script";
   }
 `;
