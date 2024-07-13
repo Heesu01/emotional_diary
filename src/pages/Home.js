@@ -8,7 +8,7 @@ import DiaryList from "../components/DiaryList";
 
 const Home = () => {
   const data = useContext(DiaryStateContext);
-  const [filterData, setFilterData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [pivotDate, setPivotDate] = useState(new Date());
   const headerTitle = `${pivotDate.getFullYear()}년
   ${pivotDate.getMonth() + 1} 월`;
@@ -21,15 +21,16 @@ const Home = () => {
   };
 
   useEffect(() => {
+    console.log("Diary data:", data);
     if (data.length >= 1) {
       const { beginTimeStamp, endTimeStamp } = getMonthRangeByDate(pivotDate);
-      setFilterData(
+      setFilteredData(
         data.filter(
           (it) => beginTimeStamp <= it.date && it.date <= endTimeStamp
         )
       );
     } else {
-      setFilterData([]);
+      setFilteredData([]);
     }
   }, [data, pivotDate]);
 
@@ -40,17 +41,7 @@ const Home = () => {
         leftChild={<Button text={"<"} onClick={onDecreaseMonth} />}
         rightChild={<Button text={">"} onClick={onIncreaseMonth} />}
       />
-      <DiaryList data={filterData} />
-      <Editor
-        initData={{
-          date: new Date().getTime(),
-          emotionId: 1,
-          content: "이전작성일기",
-        }}
-        onSubmit={() => {
-          alert("작성완료");
-        }}
-      />
+      <DiaryList data={filteredData} />
     </div>
   );
 };

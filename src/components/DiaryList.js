@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import DiaryItem from "./DiaryItem";
 
 const DiaryList = ({ data }) => {
-  const [sortType, setSortType] = useState("Latest");
+  const [sortType, setSortType] = useState("latest");
   const [sortedData, setSortedData] = useState([]);
 
   useEffect(() => {
+    console.log("Data received:", data);
     const compare = (a, b) => {
       if (sortType === "latest") {
         return Number(b.date) - Number(a.date);
@@ -49,6 +51,11 @@ const DiaryList = ({ data }) => {
           <Button type={"positive"} text="새 일기 쓰기" onClick={onClickNew} />
         </Right>
       </ManuWrapper>
+      <ListWrapper>
+        {sortedData.map((it) => (
+          <DiaryItem key={it.id} {...it} />
+        ))}
+      </ListWrapper>
     </List>
   );
 };
@@ -78,4 +85,5 @@ const Right = styled.div`
     width: 100%;
   }
 `;
+const ListWrapper = styled.div``;
 export default DiaryList;

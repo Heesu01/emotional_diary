@@ -103,8 +103,8 @@ function App() {
     return <div>데이터를 불러오는 중입니다..</div>;
   } else {
     return (
-      <DiaryDispatchContext.Provider value={data}>
-        <DiaryStateContext.Provider
+      <DiaryStateContext.Provider value={data}>
+        <DiaryDispatchContext.Provider
           value={{
             onCreate,
             onUpdate,
@@ -119,8 +119,8 @@ function App() {
               <Route path="/edit/:id" element={<Edit />} />
             </Routes>
           </div>
-        </DiaryStateContext.Provider>
-      </DiaryDispatchContext.Provider>
+        </DiaryDispatchContext.Provider>
+      </DiaryStateContext.Provider>
     );
   }
 }
